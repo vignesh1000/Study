@@ -1,0 +1,6 @@
+while((temp != temp1) && (head != NULL))
+{
+	temp = head->next;
+	temp1 = head->next->next;
+	head = head->next;
+}
