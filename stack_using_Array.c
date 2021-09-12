@@ -61,6 +61,15 @@ void pop(int *iData)
 	}
 }
 
+void display(void)
+{
+	int temp = top;
+	while(temp != -1)
+	{
+		printf("Display element:%d\n",stack[temp]);
+		temp = temp - 1;
+	}
+}
 
 void main()
 {
@@ -70,6 +79,8 @@ void main()
 	push(4);
 	push(5);
 	push(6);
+	
+	display();
 
 	pop(&iData);
 	printf("elements : %d\n",iData);
