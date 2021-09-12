@@ -29,6 +29,17 @@ struct node* pop(void)
 	return temp;
 }
 
+void display(void)
+{
+	struct node *temp = head;
+
+	while(temp != NULL)
+	{
+		printf("Element: %d\n",temp->data);
+		temp = temp->next;
+	}
+}
+
 void main()
 {
 	struct node* tmp;
