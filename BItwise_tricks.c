@@ -41,4 +41,3 @@ int isPowerof2(int x)
 a ^= b;
 b ^= a; 
 a ^= b;
-18. 
