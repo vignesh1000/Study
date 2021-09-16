@@ -41,3 +41,6 @@ int isPowerof2(int x)
 a ^= b;
 b ^= a; 
 a ^= b;
+18. add 2 numbers without using + operator - (x-(-y))
+19. sub 2 numbers without using - operator - x+(~y)+1
+20. find odd or even withour arithmetic operators - (x&1)
