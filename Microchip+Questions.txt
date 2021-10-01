@@ -1,0 +1,142 @@
+Generate a square wave with a time period 12.5 us operating at 8Mhz system clock, use timer0 - 8 bit timer and GPIO PB5.
+Registers:
+DDRB - Direction of GPIO, 1-OP and 0-IP
+PORTB - 1-output high,0-output low
+TCR - Bit0-starting a timer,
+TIFR- Bit0-overflow bit
+TCNTR - timer counter register
+
+#define SYSTEM_CLK	8000000
+
+void main()
+{
+	Timer_Init();
+	GPIO_Init();
+
+while(1)
+{	
+	while(!(TIFR&0x01));
+	PORTB ^= (1<<5);
+	TIFR &= ~(0x01);
+}
+	
+}
+
+void Timer_Init(void)
+{
+	
+	TCNTR = 100/2;//configure count
+	TCR |= (0x01); 		
+}
+
+void GPIO_Init(void)
+{
+	DDRB |= 1<<5;//configuring GPIO as output(PB5)
+}
+
+Write a C function alone with proper syntax, that will reverse the bits of a given 8-bit unsigned char variable.
+Example: if the input unsigned char consists of bits 10010011, then the return value should be bits 01101100.
+
+unsigned char reverse(unsigned char value)
+{
+	return ~(value);
+}
+
+8 BIT adc
+Ref voltage - 5V
+Vin-2V
+Digital value - ?
+
+resolution = ref/(2^8)-1;
+
+resolution = 20mV.
+
+digital value = vin/resolution = 100.
+
+
+Inputs - a,b
+output - y
+a	b	carry		y
+0	0	0		0
+0	1	0		1
+1	0	0		1
+1	1	1		0
+
+carry = a&b
+sum = a^b
+
+data - 0x12345678
+address - 0x100
+little endian processor
+
+0x100	1
+104	2
+108	3
+112	4
+116	5
+120	6
+124	7
+128	8
+
+little - lower in higher
+big - higher in higher
+
+#include <stdio.h>
+    
+int main(void)  {
+        
+char p;
+        
+char buff[10] = {1, 2, 3, 4, 5, 6, 9, 8};
+        
+p = (buff + 1)[5];
+        
+printf("%d", p); 
+    }
+
+#include <stdio.h>
+
+void main()  {
+    
+int x = 1, y = 1, z = 1; 
+z = ++x || ++y && ++z;
+    
+printf("%d, %d, %d\n", y, x, z);  
+}
+
+void main() {
+    
+union { int a; int b; int c; } u, w; 
+u.c = 24;
+    
+u.a = 10; 
+u.b = 20;
+    
+printf(“%d %d %o\n”, u.a, u.b, u.c);
+}
+
+
+#include<stdio.h>
+   
+void main() 
+{
+   
+int const *p=5; 
+   
+printf("%d", ++(*p));
+
+}
+int *arr[10];//array of pointers
+
+//function pointers
+
+int * fun(char *, float);
+
+
+
+
+
+
+
+
+
