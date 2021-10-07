@@ -34,4 +34,5 @@ void main()
 3. THR and RBR muxed in controllers
 4. Interrupts in uart and spi
 5. Handling large data in uart interrupts. 
-6. 
+6. Int *const p and int const *p
+
