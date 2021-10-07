@@ -1,7 +1,7 @@
 int main( ) 
 {  int i;   
 for (i =1; i<=10; i++);  
-printf (“%d”, ++i); 
+printf (â€œ%dâ€, ++i); 
 return 0;
 }
 
@@ -15,7 +15,7 @@ void fn()
     
 	i += i;
     
-	printf(“%d\n”, i);
+	printf(â€œ%d\nâ€, i);
 
 }
 
@@ -31,3 +31,7 @@ void main()
 
 1.program to split tokens
 2. program to merge 2 arrays.
+3. THR and RBR muxed in controllers
+4. Interrupts in uart and spi
+5. Handling large data in uart interrupts. 
+6. 
