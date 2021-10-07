@@ -60,3 +60,31 @@ int main()
     
     return 0;
 }
+
+typedef struct
+{
+    int a;
+    int b;
+    int c;
+}values;
+
+int main()
+{
+    int copies = 3;
+    int count = 0;
+    values **ptr;
+    
+    ptr = (values **)malloc(sizeof(values *)*copies);
+    
+    for(count=0;count<copies;count++)
+    {
+        ptr[count] = (values *)malloc(sizeof(values));
+    }
+    
+    ptr[0]->a = 10;
+    ptr[1]->a = 20;
+    
+    printf("value of a =%d",ptr[0]->a);
+    
+    return 0;
+}
