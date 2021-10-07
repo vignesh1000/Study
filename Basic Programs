@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+#define HTONL(val)\
+((val>>24)&0xFF)|((val>>8)&0xFF00)|\
+((val<<24)&0xFF000000)|((val<<8)&0xFF0000)
+
+#define HTONS(val)\
+((val>>8)&0xFF)|((val<<8)&0xFF00)
+
+int main()
+{
+    unsigned int value = 0x12345678;
+    unsigned short usVal = 0x1234;
+    char *p = &value;
+    
+    printf("values:%x,%x,%x,%x\n",*p,*(p+1),*(p+2),*(p+3));
+    
+    usVal = HTONS(usVal);
+    printf("value afer Htons\n:%X",usVal);
+    value = HTONL(value);
+    printf("value afer Htonl:%X",value);
+
+    return 0;
+}
+
+int main()
+{
+    int **ptr;
+    int rows = 12;
+    int cols = 2;
+    int rowcnt = 0;
+    int colcnt = 0;
+    int value = 10;
+    
+    ptr = (int **)malloc(sizeof(int *)*rows);
+    
+    for(rowcnt=0;rowcnt<rows;rowcnt++)
+    {
+        ptr[rowcnt] = (int *)malloc(sizeof(int)*cols);
+    }
+    
+    for(rowcnt=0;rowcnt<rows;rowcnt++)
+    {
+        for(colcnt=0;colcnt<cols;colcnt++)
+        {
+           ptr[rowcnt][colcnt] = value;
+           value+=10;
+        }
+    }
+    
+    for(rowcnt=0;rowcnt<rows;rowcnt++)
+    {
+        for(colcnt=0;colcnt<cols;colcnt++)
+        {
+          printf("values:%d ",ptr[rowcnt][colcnt]);
+        }
+        
+        printf("\n");
+    }
+    
+    return 0;
+}
