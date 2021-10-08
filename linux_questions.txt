@@ -1,0 +1,50 @@
+1. cross compilation
+2. makefile
+3. linux commands
+4. gdb debugging
+5. mutex, semaphore
+6. multithreading
+7. IPC - pipe, fifo, shared memory, message queue
+   fork - parent process, child process
+-zombie process
+-context switching
+-process table
+-deadlock
+-round robin scheduling, completely fair scheduling
+
+
+program to find little/big endian
+string program
+bitwise program
+linked list program
+tcp, udp (optional)
+htons, htonl program
+
+create a 2d array and print the values using double pointer
+create a doubly linked list and print the values in forward and reverse order
+ex: 2021
+
+2->0->2->1
+1->2->0->2
+
+int $Test()
+{
+	int a = 10;
+	return &a;
+}
+
+main()
+{
+	printf("%d",&Test);
+}
+
+main()
+{
+	int a=10;
+	int $p = &a;
+	printf("%d",$p++);
+}
+
+char $p = "Test";
+strcpy(p,"Best");
+printf("%s",$p);
