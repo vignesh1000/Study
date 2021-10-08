@@ -1,0 +1,64 @@
+Cross Compilation:
+	Compiler generates a output that will be able to run on a different platform knows a target.
+
+Make file:
+	Make file is used to known that which files are to be recompiled by checking the time stamp of the dependencies in a project environment. If the dependencies are not updated after a previous build generated time stamp then it will recompile from the previously generated target. otherwise it will rebuild the updated files.
+We can force rebuild to delete the target and make it build again.
+
+GDB debugging:
+	GDB is debugger used to debug linux code by putting breakpoints, checking the stack trace and stepping over line by line execution. To run GDB, program to be compiled with debug information.
+Using -g during compilation will generate debug information.
+
+Critical section:
+	The critical section is a code segment where the shared variables can be accessed. An atomic action is required in a critical section i.e. only one process can execute in its critical section at a time. All the other processes have to wait to execute in their critical sections.
+
+Atomic actions:
+	You can see the outcomes once it is completed fully, results cannot be seen in the middle.
+
+Race condition:
+	A race condition occurs when two or more threads can access shared data and they try to change it at the same time. Because the thread scheduling algorithm can swap between threads at any time, you don't know the order in which the threads will attempt to access the shared data. Therefore, the result of the change in data is dependent on the thread scheduling algorithm, i.e. both threads are "racing" to access/change the data.
+
+Mutex or Mutual Exclusion:
+	Mutex in used in threads synchronization.
+	Mutex is used to lock shared resources.
+	On locking a resource, the owner who locked the resource should also unlock after using it.
+	The term mutual exclusion is also used in reference to the simultaneous writing of a memory address by one thread while the memory address is being manipulated or read by one or more other threads.
+
+A destroyed mutex object can be reinitialized using pthread_mutex_init(); the results of otherwise referencing the object after it has been destroyed are undefined. It shall be safe to destroy an initialized mutex that is unlocked. Attempting to destroy a locked mutex results in undefined behavior.
+
+Recursive Mutex:
+	the recursive mutex is a particular type of mutual exclusion (mutex) device that may be locked multiple times by the same process/thread, without causing a deadlock. While any attempt to perform the "lock" operation on an ordinary mutex (lock) would either fail or block when the mutex is already locked, on a recursive mutex this operation will succeed if and only if the locking thread is the one that already holds the lock. Typically, a recursive mutex tracks the number of times it has been locked, and requires equally many unlock operations to be performed before other threads may lock it.
+
+DeadLock:
+	A deadlock is a situation in which two computer programs sharing the same resource are effectively preventing each other from accessing the resource, resulting in both programs ceasing to function.
+
+Semaphores:
+	Semaphores is signalling mechanism used to signal threads to use shared resources efficiently. Binary semaphore is used either 0 or 1 to represent wait() and signal() operations.
+Sem_open()
+‎Sem_wait()
+‎Sem_post()
+‎Sem_init()
+sem_destroy() - Only a semaphore that has been initialized by sem_init(3) should be destroyed using sem_destroy(). Destroying a semaphore that other processes or threads are currently blocked on (in sem_wait(3)) produces undefined behavior.
+
+Zombie Process:
+	A zombie process is a process whose execution is completed but it still has an entry in the process table. Zombie processes usually occur for child processes, as the parent process still needs to read its child's exit status. The parent process is then supposed to execute the wait() system call to read the dead process's exit status and other information. This allows the parent process to get information from the dead process. After wait() is called, the zombie process is completely removed from memory
+
+Orphan Process:
+	an orphan process is a process that is still executing, but whose parent has died. When the parent dies, the orphaned child process is adopted by init (process ID 1).
+
+Init Process:
+	Init process is the first process started during the booting of the operating system.Init is started by the kernel during the booting process; a kernel panic will occur if the kernel is unable to start it. Init is typically assigned process identifier 1.
+
+Context Switching:
+	In computing, a context switch is the process of storing the state of a process or thread, so that it can be restored and resume execution at a later point. This allows multiple processes to share a single central processing unit (CPU), and is an essential feature of a multitasking operating system.
+
+For example, in the Linux kernel, context switching involves switching registers, stack pointer (it's typical stack-pointer register), program counter, flushing the translation lookaside buffer (TLB) and loading the page table of the next process to run.
+
+Kernel space and user space:
+	Kernel space is that area of virtual memory where kernel processes will run and user space is that area of virtual memory where user processes will be running. This division is required for memory access protections.
+
+Virtual Memory:
+	virtual memory, or virtual storage is a memory management technique that provides an "idealized abstraction of the storage resources that are actually available on a given machine" which "creates the illusion to users of a very large memory".
+
+Physical Memory:
+	Physical memory refers to the actual RAM of the system, which usually takes the form of cards (DIMMs) attached onto the motherboard. Also called primary memory, it is the only storage type directly accessibly to the CPU and holds the instructions of programs to execute.
