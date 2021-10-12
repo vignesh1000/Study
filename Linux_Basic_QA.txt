@@ -98,4 +98,12 @@ Role of shared memory:
 
 APi used for shared memory:
 shmget(), shmat(), shmdt(), shmctl().
+
+Named Pipes(FIFO):
+   - It is an extension to the traditional pipe concept on Unix. A traditional pipe is “unnamed” and lasts only as long as the process.
+   - A named pipe, however, can last as long as the system is up, beyond the life of the process. It can be deleted if no longer used.
+   - Usually a named pipe appears as a file and generally processes attach to it for inter-process communication. A FIFO file is a special kind of file on the local storage which allows two or more processes to communicate with each other by reading/writing to/from this file.
+    -A FIFO special file is entered into the filesystem by calling mkfifo() in C. Once we have created a FIFO special file in this way, any process can open it for reading or writing, in the same way as an ordinary file. However, it has to be open at both ends simultaneously before you can proceed to do any input or output operations on it.
+    API used are mkfifo() - create a name pipe
+    open,close,read,write
 	
