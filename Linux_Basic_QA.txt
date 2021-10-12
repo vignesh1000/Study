@@ -88,7 +88,7 @@ Methods in message passing:
 Also it has direct passing which 2 processes communicate through providing process identifiers when sending the message and indirect passing comes when they share a common mailbox to send and receive messages.
 
 API used in message queues:
-mq_open, mq_close, mq_send, mq_receive, mq_MaxMsg, mq_MsgSize, mq_notify.
+msgsnd(), msgrcv(),msgget() - to create message queue
 
 shared memory:
 	Shared memory is a feature supported by UNIX System V, including Linux, SunOS and Solaris. One process must explicitly ask for an area, using a key, to be shared by other processes. This process will be called the server. All other processes, the clients, that know the shared area can access it.
