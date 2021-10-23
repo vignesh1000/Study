@@ -1,0 +1,84 @@
+
+ARINC429:
+
+Label = 8 bits
+SDI - 2 bits - pbit or cbit or ibit
+Data - 19 bits
+SSM - 2 bits
+Parity - 1 bit
+
+12.5kbps and 100kbps
+
+label - 120
+SDI - PBIT(01)
+data - (1<<8)|(1<<15)
+
+
+void setbit(int pos,int data)
+{
+	data |= (1<<pos);
+}
+void clearbit(int pos,int data)
+{
+`	data &= ~(1<<pos);
+}
+
+AT32UC3C0512c - 32 BIT CONTROLLER
+ATMEL STUDIO 6.2
+
+1.C
+*****
+#include "common.h"
+int main()
+{
+	char y = 0;
+	func(&y);
+	printf("%d",y);
+	return 0;
+}
+
+2.c
+****
+#include "common.h"
+void func(char *a)
+{ 
+	static char x = 10;
+	printf("hello");
+	x++;
+	*a = x;
+	printf("%d",x);//11,12,13,14,15
+}
+
+common.h
+********
+
+void func(char *a);
+
+Function pointer:
+
+int (*func_ptr)(int) = &function; //declaration
+
+func_ptr(10);//calling function
+
+typedef struct
+{
+	char a:1;	
+	char b:1;
+	char c:1;
+	char d:1;
+	char e:1;
+	char f:1;
+	char g:1;
+	char h:1;
+}REGISTER;
+typedef union
+{
+	REGISTER value;
+	unsigned char ucValue;
+}
+
+a[i][j][k][l]//array
+
+*(*(*(*a+i)+j)+k)+l = 0x55;//pointer
+
+
