@@ -1,0 +1,15 @@
+1.  printf(“%d”, 10 ? 0 ? 5 : 1 : 12);
+2. const char *p and char *const p
+3. #include<stdio.h>
+
+void f(int const i) 
+{
+   i=5;
+}
+main() 
+{
+   int x = 10;
+   
+   f(x);
+}
+4. https://www.geeksforgeeks.org/c-cpp-tricky-programs/
