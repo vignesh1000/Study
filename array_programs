@@ -1,0 +1,104 @@
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "sample.h"
+
+void ArraySort(int arr[],int size);
+void MergeArrays(int arr[],int arr1[],int s1,int s2,int out[]);
+char *removeDuplicate(char str[], int n);
+
+int main()
+{
+	int a[10] = {10,12,15,17,19,23,25,27,29,31};
+	int b[5] = {20,30,40,50,60};
+	int c[sizeof(a)+sizeof(b)];
+
+	MergeArrays(a,b,10,5,c);
+
+	getchar();
+	return 0;
+}
+
+
+void MergeArrays(int arr[],int arr1[],int s1,int s2,int out[])
+{
+	int arrCount = 0;
+	int arr1Count = 0;
+	int outCount = 0;
+
+	while((arrCount<s1) && (arr1Count<s2))
+	{
+		if(arr[arrCount] < arr1[arr1Count])
+		{
+			out[outCount] = arr[arrCount];
+			outCount++;
+			arrCount++;
+		}
+		else
+		{
+			out[outCount] = arr1[arr1Count];
+			outCount++;
+			arr1Count++;
+		}
+	}
+
+	while(arrCount<s1)
+	{
+		out[outCount] = arr[arrCount];
+		outCount++;
+		arrCount++;
+	}
+
+	while(arr1Count<s2)
+	{
+		out[outCount] = arr1[arr1Count];
+		outCount++;
+		arr1Count++;
+	}
+}
+
+char *removeDuplicate(char str[], int n)
+{
+   // Used as index in the modified string
+   int index = 0; 
+     int j = 0; 
+	 int i = 0;
+    
+   // Traverse through all characters
+   for (i=0; i<n; i++) {
+        
+     // Check if str[i] is present before it 
+   
+     for (j=0; j<i; j++)
+        if (str[i] == str[j])
+           break;
+      
+     // If not present, then add it to
+     // result.
+     if (j == i)
+        str[index++] = str[i];
+   }
+    
+   return str;
+}
+
+void ArraySort(int arr[],int size)
+{
+	int iOuterLoop = 0;
+	int iInnerLoop = 0;
+	int iTemp = 0;
+
+	for(iOuterLoop=0;iOuterLoop<size;iOuterLoop++)
+	{
+		for(iInnerLoop=iOuterLoop+1;iInnerLoop<size;iInnerLoop++)
+		{
+			if(arr[iOuterLoop] < arr[iInnerLoop])
+			{
+				iTemp = arr[iInnerLoop];
+				arr[iInnerLoop] = arr[iOuterLoop];
+				arr[iOuterLoop] = iTemp;
+			}
+		}
+	}
+}
