@@ -1,0 +1,68 @@
+char *
+
+int
+
+int (*func_ptr)(char *);
+
+int int array 5 pointers
+
+int(*func_ptr[5])(int);
+
+a[] = {10,20,30,40,50};
+
+int FindMax(int *a, int size)
+{
+	unsigned int count=0;
+	int max=0;
+
+	max = a[0];
+
+	for(count=0;count<size;count++)
+	{	
+	if(a[count]>max)
+	{
+		max =a[count];
+	}
+	}	
+
+	return max;
+}
+
+a=10, b=30
+
+a = a-b;
+b = b-a;
+a = a-b;
+
+&a+1 - &a
+
+1000
+
+1020
+
+
+0xa - input - 1010 = 1100
+
+0xc = num |= (num&0x2<<1) | (num&0x4>>1)
+
+input - 235
+output - 532
+char* reverseNum(int num)
+{
+	unsigned char a[10] = {0};	
+	int rem=0;
+	int count = 0;
+
+	while(num)
+	{
+		a[count] = num%10;
+		num = num/10;
+		count++;
+	}
+
+	return a;
+}
+
+sum = x -(-y)
+
+
