@@ -45,47 +45,77 @@ process thread difference
 mutex lock
 
 
-Void ReverseWords(char *ptr) //how are you
+void ReverseString(char *start, char * end)
+{
+	char temp;
+	while(start < end)//check start is lesser than end
+	{
+		temp = *start;  //perform character swap using temp variable
+		*start = 	*end;
+		*end = temp;
+		
+		start++;//increment start
+		end--; //decrement end
+	}		
+}
+
+void StringReverse(char *ptr)//to reverse a string
+{
+	char *startptr = ptr;
+	char *endptr = ptr;
+	int length = strlen(ptr);
+	char temp = 0;
+	int count = 0;
+	int end = length/2;
+
+	for(count=0;count<end;count++)
+	{	
+		temp = endptr[length-1];
+		endptr[length-1] = startptr[count];
+		startptr[count] = temp;
+		length--;
+	}
+}
+
+void ReverseWords(char *ptr)//input sentence
 {
 	int i=0;
 	char *backup;
 	char *temp;
 
+	//checking the input ptr is NULL or not
 	if(ptr != NULL)
 	{
+		//taking backup of the input ptr
 		backup = ptr;
-		temp = ptr;
 
-		while(*ptr++)
+		// taking a temporary backup
+		temp = ptr; 
+
+		//checking for NULL character encounter
+		while(*temp)
 		{
-			if(ptr[i] = ' ')
+			//incrementing the pointer upto NULL
+			temp++;
+
+			//checking for white space, if white space then reverse the word alone
+			if(*temp == ' ')
 			{	
-				ReverseString(backup,ptr);//(how are you, are you)	
-				backup = ptr+1;
-			}		
+				//function to reverse a tring
+				ReverseString(backup,temp-1);
+
+				//updating backup pointer to point to the next word
+				backup = temp+1;
+			}
+			//checking for NULL
+			else if(*temp == '\0')
+			{
+				//if NULL then reverse the last word in the sentence
+				ReverseString(backup,temp-1);
+			}
 		}
 
-		if(*ptr == NULL)
-		{
-			ReverseString(temp,ptr-1);	
-		}
-
-		printf("%s",backup);		
+		//Reverse reversed words in a string
+		ReverseString(ptr,temp-1);
 	}
-	
-}
-
-
-void ReverseString(char *str, char * str1)
-{
-	char temp;
-	while(str < str1)
-	{
-		temp = *str;
-		*str = 	*str1;
-		*str1 = temp;
-		
-		str++;
-		str1--;
-	}		
 }
