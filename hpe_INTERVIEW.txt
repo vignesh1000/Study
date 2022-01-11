@@ -1,0 +1,75 @@
+
+inputs - num, pos1, pos2
+
+int SwapBits(int num, int pos1, int pos2) - 0xa,2,3
+{
+	int FirstBit =  (num >> pos1) & 0x1;
+	int secondBit = (num >> pos2) & 0x1;
+	
+	if(FirstBit != secondBit)
+	{
+		num |= (FirstBit << pos2) | (secondBit << pos1);
+	}
+
+	return num;
+}
+
+0x60 - 0110 0000
+
+how are you - you are how
+
+I2C device discover
+
+SPI or i2c which is better
+
+volatile keyowrd use and applications
+
+process thread difference
+
+mutex lock
+
+
+Void ReverseWords(char *ptr) //how are you
+{
+	int i=0;
+	char *backup;
+	char *temp;
+
+	if(ptr != NULL)
+	{
+		backup = ptr;
+		temp = ptr;
+
+		while(*ptr++)
+		{
+			if(ptr[i] = ' ')
+			{	
+				ReverseString(backup,ptr);//(how are you, are you)	
+				backup = ptr+1;
+			}		
+		}
+
+		if(*ptr == NULL)
+		{
+			ReverseString(temp,ptr-1);	
+		}
+
+		printf("%s",backup);		
+	}
+	
+}
+
+
+void ReverseString(char *str, char * str1)
+{
+	char temp;
+	while(str < str1)
+	{
+		temp = *str;
+		*str = 	*str1;
+		*str1 = temp;
+		
+		str++;
+		str1--;
+	}		
+}
