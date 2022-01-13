@@ -46,3 +46,6 @@ a ^= b;
 20. find odd or even withour arithmetic operators - (x&1)
 21. Changing upper case to lower case  - ch = ch| ' '; //setting the 5th bit is lower case and clearing the 5th it is upper case
 22. changing from lower case to upper case - ch = ch & '_';
+23. number of flip bits while changing a number from one to other - 
+    step 1 : a^b
+    step 2 : count set bits
