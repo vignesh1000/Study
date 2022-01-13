@@ -44,3 +44,5 @@ a ^= b;
 18. add 2 numbers without using + operator - (x-(-y))
 19. sub 2 numbers without using - operator - x+(~y)+1
 20. find odd or even withour arithmetic operators - (x&1)
+21. Changing upper case to lower case  - ch = ch| ' ';
+22. changing from lower case to upper case - ch = ch & '_';
