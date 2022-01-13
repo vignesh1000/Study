@@ -103,19 +103,21 @@ void i2c_stop_cond(void){
 
 // Write a bit to I2C bus
 void i2c_write_bit(bool bit) {
+clear_SCL();
   if (bit) {
     Set_SDA();/*TBN*/
   } else {
     clear_SDA();
   }
   I2C_delay();
-  clear_SCL();
+  Set_SCL();
 }
 
 // Read a bit from I2C bus
 bool i2c_read_bit(void) {
   bool bit;
   // Let the slave drive data
+  Set_SCL();
   read_SDA();
   I2C_delay();
   // SCL is high, now data is valid
