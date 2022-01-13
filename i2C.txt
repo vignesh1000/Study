@@ -1,0 +1,162 @@
+I2c Write : 
+
+Master - start
+Master - slave address with write bit access(0)
+slave  - -------ack----------
+Master - command byte
+slave - -------ack----------
+Master - data bytes
+slave - -------ack----------
+Master - stop
+
+I2C read:
+
+Master - start
+Master - slave address with write access(0)
+slave  - -------ack----------
+Master - command byte
+slave - -------ack----------
+Master - slave address with read access(1)
+slave - ------ack-----------
+slave - data bytes
+Master - -------ack-----------
+slave - last byte
+Master - --------NACK----------
+Master - stop
+
+
+i2c Detailed explaination -  https://www.analog.com/en/technical-articles/i2c-primer-what-is-i2c-part-1.html
+
+I2c BIt banging:
+
+#define I2CSPEED 135
+#define SCL P0_0
+#define SDA P0_1
+
+void I2C_delay() { volatile int v; int i; for (i=0; i < I2CSPEED/2; i++) v; }
+bool read_SCL(void); // Set SCL as input and return current level of line, 0 or 1
+bool read_SDA(void); // Set SDA as input and return current level of line, 0 or 1
+void clear_SCL(void); // Actively drive SCL signal low
+void clear_SDA(void); // Actively drive SDA signal low
+void Set_SDA(void);  // Actively drive SDA signal High;
+void Set_SCL(void);  // Actively drive SCL signal High
+
+void Set_SCL(void)
+{
+    //make  P0_0 as OutputPort
+    SCL = 1;
+}
+
+void Set_SDA(void)
+{
+    //make  P0_1 as OutputPort
+    SDA = 1;
+}   
+
+void clear_SCL(void)
+{
+    //make  P0_0 as OutputPort
+    SCL = 0;
+}
+
+void clear_SDA(void)
+{
+    //make  P0_1 as OutputPort
+    SDA = 0;
+}
+
+bool read_SCL(void)
+{
+    //make  P0_0 as InputPort
+    return SCL;
+}
+
+bool read_SDA(void)
+{
+    //make  P0_0 as InputPort
+    return SDA;
+}
+
+void i2c_start_cond(void) {
+
+  // set SDA to 1
+  Set_SDA();/*TBN*/
+  set_SCL();
+  // SCL is high, set SDA from 1 to 0.
+  I2C_delay();
+  clear_SDA();
+  I2C_delay();
+  I2C_delay();
+  clear_SCL();//make SCL Low for data transmission 
+  started = true;
+}
+
+void i2c_stop_cond(void){
+  // set SDA to 0
+  clear_SDA();
+  I2C_delay();
+  // SCL is high, set SDA from 0 to 1
+  Set_SCL();/*TBN*/
+  I2C_delay();
+  Set_SDA();
+}
+
+// Write a bit to I2C bus
+void i2c_write_bit(bool bit) {
+  if (bit) {
+    Set_SDA();/*TBN*/
+  } else {
+    clear_SDA();
+  }
+  I2C_delay();
+  clear_SCL();
+}
+
+// Read a bit from I2C bus
+bool i2c_read_bit(void) {
+  bool bit;
+  // Let the slave drive data
+  read_SDA();
+  I2C_delay();
+  // SCL is high, now data is valid
+  bit = read_SDA();
+  I2C_delay();
+  clear_SCL();
+  return bit;
+}
+
+// Write a byte to I2C bus. Return 0 if ack by the slave.
+bool i2c_write_byte(bool send_start,
+                    bool send_stop,
+                    unsigned char byte) {
+  unsigned bit;
+  bool nack;
+  if (send_start) {
+    i2c_start_cond();
+  }
+  for (bit = 0; bit < 8; bit++) {
+    i2c_write_bit((byte & 0x80) != 0);
+    byte <<= 1;
+  }
+  nack = i2c_read_bit();
+  if (send_stop) {
+    i2c_stop_cond();
+  }
+  return nack;
+}
+
+// Read a byte from I2C bus
+unsigned char i2c_read_byte(bool nack, bool send_stop) {
+  unsigned char byte = 0;
+  unsigned bit;
+  for (bit = 0; bit < 8; bit++) {
+    byte = (byte << 1) | i2c_read_bit();
+  }
+  i2c_write_bit(nack);
+  if (send_stop) {
+    i2c_stop_cond();
+  }
+  return byte;
+}
+
+
