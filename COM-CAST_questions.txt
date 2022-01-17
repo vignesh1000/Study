@@ -1,0 +1,12 @@
+1. Progarm to swap diagonals in a matrix
+2. Find intersecting node in linked lists
+3. Malloc
+4. kalloc
+5. realloc
+6. function pointer
+7. smart pointers
+8. weak pointers.
+9. dangling pointers
+10. memory leaks.
+11. queue operations
+12. this pointers.
