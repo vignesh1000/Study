@@ -49,3 +49,16 @@ a ^= b;
 23. number of flip bits while changing a number from one to other - 
     step 1 : a^b
     step 2 : count set bits
+24. logic to maintain odd parity;
+
+short parityCalc(usRTNum)
+{
+usRTNum = in_usRTNum& 0x1F;
+			
+while(usRTNum)
+{
+	usParity += (usRTNum & 0x1);
+	usRTNum   = usRTNum>>1;
+}
+return (short)(~usParity & 0x01);
+}
