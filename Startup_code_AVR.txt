@@ -1,0 +1,9 @@
+Startup code of microcontrollers:
+
+Control will go to the reset vector location determined by the bootloader -> 
+_start routine will be called -> stack pointer is initialized to the initial value -> 
+load the interrupt vector table -> 
+initialize the initialized data segment for global variables in _edata section -> 
+initialize the uninitialized data segment from _bss section -> 
+load the link register with _exit routine for safety purpose -> 
+load the program counter with the main function of our application fimrware.
