@@ -1,0 +1,96 @@
+In a 32 bit processor, what is the size of this structure by default
+struct struct_test
+{
+unsigned char a;
+unsigned int b;
+};//8 bytes
+
+union union_test
+{
+unsigned char a;
+unsigned int b;
+};// 4 bytes
+
+struct struct_test
+{
+unsigned char a;
+unsigned char b;
+}; //2 bytes
+
+union union_test var;
+var.b = 0x12345678
+
+xon and xoff
+
+arr1 - sorted order 1,3,5,7,9
+arr2 - sorted order 0,2,4,6,8,10,12
+
+void Sort(int *arr1, int count1, int *arr2, int count2, int *output) // arr1 & arr2 are already sorted in ascending order
+{
+	int temparr1Cnt = 0;
+	int temparr2Cnt = 0;
+	int outputCnt = 0;
+
+	while((temparr1Cnt < count1) && (temparr2Cnt < count2))
+	{
+		if(arr1[temparr1Cnt] < arr2[temparr2Cnt])
+		{
+			output[outputCnt] = arr1[temparr1Cnt];
+			temparr1Cnt++;
+			outputCnt++;
+		}
+		else
+		{
+			output[outputCnt] = arr2[temparr2Cnt];
+			temparr2Cnt++;
+			outputCnt++;
+		}
+	}
+
+	while(temparr1Cnt < count1)
+	{
+		output[outputCnt] = arr1[temparr1Cnt];
+		temparr1Cnt++;
+		outputCnt++;
+	}
+	while(temparr2Cnt < count2)
+	{
+		output[outputCnt] = arr2[temparr2Cnt];
+		temparr2Cnt++;
+		outputCnt++;	
+	}
+}
+
+int ToggleBit(unsigned int num, unsigned int pos)
+{
+	return (num ^ (1<<pos));
+}
+
+int ClearBit(unsigned int num, unsigned int pos)
+{
+	return (num & ~(1<<pos));
+}
+
+int PrintCombinations (int *arr, int count, int r) //dont use nCr formula
+Example: {1,2,3} - 3C2
+1, 2
+2, 3
+1, 3
+
+int PrintCombinations (int *arr, int count, int r)
+{
+	
+}
+
+Binary search tree-program
+
+how breakpoint works?
+windows UART calls to open and get a handle?
+bss and sbss?
+bootloader configuration word
+microcontroller communicates with other peripherals.
+how controller is determined 32 bit or 16 bit or 8 bit?
+maskable and non maskable interrupts?
+stack underflow in assembly generation.
+data bus and address bus in a controllers.
+
