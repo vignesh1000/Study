@@ -93,4 +93,5 @@ how controller is determined 32 bit or 16 bit or 8 bit?
 maskable and non maskable interrupts?
 stack underflow in assembly generation.
 data bus and address bus in a controllers.
+how to change stack size of controller in code?
 
