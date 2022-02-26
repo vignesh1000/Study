@@ -82,6 +82,9 @@ int PrintCombinations (int *arr, int count, int r)
 	
 }
 
+Dynamic memory implametation in AVR:
+http://www.nongnu.org/avr-libc/user-manual/malloc.html
+
 Binary search tree-program
 
 how breakpoint works?
