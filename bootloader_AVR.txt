@@ -1,0 +1,43 @@
+Booting process in a DIU Bootloader:
+************************************
+
+1. check the CRC of the configuration word 1 with the polynomial in the user page of flash, if the word is corrupted then ISP will be initiated.
+2. Then read the boot key from the configuration word 1, if key is not correct then start the loader.
+3. Then test for force to ISP bit, if set then start loader.
+4. check for reset conditions, if wdt reset and shutdown sleep then start application
+5. if boot key, configuration word 1 are ok, then go for checking configuration word 2.
+6. if IO condition enable bit is zero, then start the application.
+7. check for the CRC of the configuration word 2, if corrupted start isp loader.
+8. check for the boot key value from the configuration word 2., if corrupted then start loader.
+9. check the IO condition state for booting the loader or application.
+10. check for ISP ram key is set is not and boot without key if corrupted.
+
+
+start loader:
+setting the c environment for starting the bootloader code.
+
+application:
+loading the PC with the application program offset flash address.
+
+command for programming bootlader:
+
+echo.
+echo Performing a JTAG Chip Erase command.
+avr32program chiperase
+
+echo.
+echo Programming MCU Serial Bootloader from `BOOTLOADER_AVR321_AT32UC3C.elf'.
+avr32program program -finternal@0x80000000 -cint -e -v -Felf BOOTLOADER_AVR321_AT32UC3C.elf
+
+echo.
+echo Programming ISP configuration words (default for STK600-RCUC3L0 i.e. Word2 == 0x929E0E62 and Word1 == 0xE11EFFD7)
+
+avr32program program -finternal@0x80000000 -ev -O0x808000F8 -Fbin at32uc3c-uart-isp_cfg-1.0.0.dat
+
+echo.
+echo Programming general-purpose fuse bits: everything as default except BOOTPROT set to 2 (for 32KBs).
+avr32program writefuses -finternal@0x80000000 gp=0xFFF3FFFF
+
+echo.
+echo Resetting MCU.
+avr32program reset
