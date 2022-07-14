@@ -35,7 +35,7 @@ int log2(int x)
 16. find whether a number is power of 2
 int isPowerof2(int x)
 {
-    return (x && !(x & x-1));
+    return !(x & x-1);
 }
 17. swap two numbers without using temporary variable
 a ^= b;
