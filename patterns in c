@@ -1,0 +1,101 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+1. #include <stdio.h>
+
+int main()
+{
+    int i,j,k=0;
+    int temp = 1;
+    int space = 0;
+    int lines=0;
+    int mirror = 1;
+    int counter = 0;
+    
+    printf("Enter the lines:\n");
+    scanf("%d",&lines);
+    
+    for(i=1;i<=lines;i++)
+    {
+        counter=1;
+        for(j=1;j<=lines;)
+        {
+            space = (lines-temp)/2;
+            for(k=0;k<space;k++)
+            {
+               printf("     ");
+               j++;
+            }
+            
+            for(k=0;k<temp;k++)
+            {
+                printf("    %d",counter); 
+                counter++;
+                j++;
+            }
+            
+            for(k=0;k<space;k++)
+            {
+                printf("     "); 
+                j++;
+            }
+        }
+        
+        if(mirror<lines)
+        {
+            temp+=2;   
+        }
+        else
+        {
+            temp-=2;
+        }
+        
+        mirror+=2;
+        printf("\n");
+    }
+
+    return 0;
+}
+
+2. /******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int main()
+{
+    int i,j;
+    int lines = 0;
+    
+    printf("Enter the lines:\n");
+    scanf("%d",&lines);
+    
+    for(i=0;i<lines;i++)
+    {
+       for(j=0;j<lines;j++)
+       {
+           if(j<i)
+           {
+              printf("      "); 
+           }
+           else
+           {
+               printf("     %d",(lines-j));
+           }
+       }
+       
+       printf("\n");
+    }
+
+    return 0;
+}
